@@ -30,6 +30,7 @@
 #define CONFIG_SYS_CLK_FREQ	12000000 /* the SMDK2410 has 12MHz input clock */
 /* FL2440 also has 12MHz input clock */
 
+#define CONFIG_SKIP_LOWLEVEL_INIT
 
 #undef CONFIG_USE_IRQ		/* we don't need IRQ/FIQ stuff */
 
