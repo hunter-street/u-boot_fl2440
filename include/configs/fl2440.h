@@ -86,7 +86,9 @@
 #define CONFIG_CMD_DATE
 #define CONFIG_CMD_DHCP
 #define CONFIG_CMD_ELF
+/*
 #define CONFIG_CMD_NAND
+*/
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_REGINFO
 #define CONFIG_CMD_USB
@@ -140,26 +142,28 @@
 #define PHYS_SDRAM_1_SIZE	0x04000000 /* 64 MB */
 
 #define PHYS_FLASH_1		0x00000000 /* Flash Bank #0 */
-
 #define CONFIG_SYS_FLASH_BASE	PHYS_FLASH_1
 
 /*-----------------------------------------------------------------------
  * FLASH and environment organization
+ * NOR: JS28F320
+ * Size 4M (0x00400000) = 128Kb (0x20000) * 32
  */
 
 #define CONFIG_SYS_FLASH_CFI
 #define CONFIG_FLASH_CFI_DRIVER
-#define CONFIG_FLASH_CFI_LEGACY
-#define CONFIG_SYS_FLASH_LEGACY_512Kx16
+//#define CONFIG_FLASH_CFI_LEGACY
+//#define CONFIG_SYS_FLASH_LEGACY_512Kx16
 #define CONFIG_FLASH_SHOW_PROGRESS	45
 
 #define CONFIG_SYS_MAX_FLASH_BANKS	1
 #define CONFIG_SYS_FLASH_BANKS_LIST     { CONFIG_SYS_FLASH_BASE }
-#define CONFIG_SYS_MAX_FLASH_SECT	(19)
+#define CONFIG_SYS_MAX_FLASH_SECT	(32)
 
-#define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE + 0x070000)
+/* Env Offset 8 sectors */
+#define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE + 0x100000)
 #define CONFIG_ENV_IS_IN_FLASH
-#define CONFIG_ENV_SIZE			0x10000
+#define CONFIG_ENV_SIZE			0x20000 /* 1 sector */
 /* allow to overwrite serial and ethaddr */
 #define CONFIG_ENV_OVERWRITE
 
@@ -175,16 +179,19 @@
 /*
  * NAND configuration
  */
+/*
 #ifdef CONFIG_CMD_NAND
 #define CONFIG_NAND_S3C2440
 #define CONFIG_SYS_S3C2440_NAND_HWECC
 #define CONFIG_SYS_MAX_NAND_DEVICE	1
 #define CONFIG_SYS_NAND_BASE		0x4E000000
 #endif
+*/
 
 /*
  * File system
  */
+/*
 #define CONFIG_CMD_FAT
 #define CONFIG_CMD_EXT2
 #define CONFIG_CMD_UBI
@@ -194,6 +201,7 @@
 #define CONFIG_MTD_PARTITIONS
 #define CONFIG_YAFFS2
 #define CONFIG_RBTREE
+*/
 
 /* additions for new relocation code, must be added to all boards */
 #define CONFIG_SYS_SDRAM_BASE	PHYS_SDRAM_1
