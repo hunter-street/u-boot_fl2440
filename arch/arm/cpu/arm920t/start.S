@@ -127,13 +127,33 @@ copyex:
 	ldr	r1, =0x3ff
 	ldr	r0, =INTSUBMSK
 	str	r1, [r0]
+# elif defined(CONFIG_S3C2440)
+	ldr  r1, =0x7fff
+	ldr  r0, =INTSUBMSK
+	str  r1, [r0]
 # endif
 
+# if defined(CONFIG_S3C2440)
+#define MPLLCON   0x4C000004
+#define UPLLCON   0x4C000008
+	ldr  r0, =CLKDIVN
+	mov  r1, #5
+	str  r1, [r0]
+
+	/* Fin=12MHz, Fout = 405MHz: m=0x7f, p=2, s=1. Refer to s3c2440 datasheet Page 7-21*/
+	ldr  r0, =MPLLCON
+	ldr  r1, =0x7F021
+	str  r1, [r0]
+	ldr  r0, =UPLLCON
+	ldr  r1, =0x38022
+	str  r1, [r0]
+# else
 	/* FCLK:HCLK:PCLK = 1:2:4 */
 	/* default FCLK is 120 MHz ! */
 	ldr	r0, =CLKDIVN
 	mov	r1, #3
 	str	r1, [r0]
+#endif
 #endif	/* CONFIG_S3C24X0 */
 
 	/*
