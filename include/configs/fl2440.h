@@ -22,15 +22,13 @@
 #define CONFIG_S3C2440		/* specifically a SAMSUNG S3C2440 SoC */
 #define CONFIG_FL2440		/* on a SAMSUNG FL2440 Board */
 
-#define CONFIG_SYS_TEXT_BASE	0x32000000
+#define CONFIG_SYS_TEXT_BASE	0x0
 
 #define CONFIG_SYS_ARM_CACHE_WRITETHROUGH
 
 /* input clock of PLL (the SMDK2410 has 12MHz input clock) */
 #define CONFIG_SYS_CLK_FREQ	12000000 /* the SMDK2410 has 12MHz input clock */
 /* FL2440 also has 12MHz input clock */
-
-#define CONFIG_SKIP_LOWLEVEL_INIT
 
 #undef CONFIG_USE_IRQ		/* we don't need IRQ/FIQ stuff */
 
