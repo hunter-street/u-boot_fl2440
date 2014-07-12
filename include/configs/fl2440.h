@@ -39,9 +39,11 @@
 /*
  * Hardware drivers
  */
-#define CONFIG_CS8900		/* we have a CS8900 on-board */
-#define CONFIG_CS8900_BASE	0x19000300
-#define CONFIG_CS8900_BUS16	/* the Linux driver does accesses as shorts */
+#define CONFIG_DRIVER_DM9000	/* we have a DM9000 on-board */
+#define CONFIG_DM9000_BASE	0x20000000 // DM9000 chip select address
+#define DM9000_IO               CONFIG_DM9000_BASE // Cmd port address
+#define DM9000_DATA             (CONFIG_DM9000_BASE+4) // Data port address
+#define CONFIG_DM9000_NO_SROM
 
 /*
  * select serial console configuration
